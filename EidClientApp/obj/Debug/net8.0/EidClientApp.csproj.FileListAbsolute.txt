@@ -1,0 +1,17 @@
+C:\Users\josue\Desktop\Projet_integre\EidClientApp\EidClientApp\bin\Debug\net8.0\EidClientApp.exe
+C:\Users\josue\Desktop\Projet_integre\EidClientApp\EidClientApp\bin\Debug\net8.0\EidClientApp.deps.json
+C:\Users\josue\Desktop\Projet_integre\EidClientApp\EidClientApp\bin\Debug\net8.0\EidClientApp.runtimeconfig.json
+C:\Users\josue\Desktop\Projet_integre\EidClientApp\EidClientApp\bin\Debug\net8.0\EidClientApp.dll
+C:\Users\josue\Desktop\Projet_integre\EidClientApp\EidClientApp\bin\Debug\net8.0\EidClientApp.pdb
+C:\Users\josue\Desktop\Projet_integre\EidClientApp\EidClientApp\bin\Debug\net8.0\Pkcs11Interop.dll
+C:\Users\josue\Desktop\Projet_integre\EidClientApp\EidClientApp\obj\Debug\net8.0\EidClientApp.csproj.AssemblyReference.cache
+C:\Users\josue\Desktop\Projet_integre\EidClientApp\EidClientApp\obj\Debug\net8.0\EidClientApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\josue\Desktop\Projet_integre\EidClientApp\EidClientApp\obj\Debug\net8.0\EidClientApp.AssemblyInfoInputs.cache
+C:\Users\josue\Desktop\Projet_integre\EidClientApp\EidClientApp\obj\Debug\net8.0\EidClientApp.AssemblyInfo.cs
+C:\Users\josue\Desktop\Projet_integre\EidClientApp\EidClientApp\obj\Debug\net8.0\EidClientApp.csproj.CoreCompileInputs.cache
+C:\Users\josue\Desktop\Projet_integre\EidClientApp\EidClientApp\obj\Debug\net8.0\EidClien.D9E42CAD.Up2Date
+C:\Users\josue\Desktop\Projet_integre\EidClientApp\EidClientApp\obj\Debug\net8.0\EidClientApp.dll
+C:\Users\josue\Desktop\Projet_integre\EidClientApp\EidClientApp\obj\Debug\net8.0\refint\EidClientApp.dll
+C:\Users\josue\Desktop\Projet_integre\EidClientApp\EidClientApp\obj\Debug\net8.0\EidClientApp.pdb
+C:\Users\josue\Desktop\Projet_integre\EidClientApp\EidClientApp\obj\Debug\net8.0\EidClientApp.genruntimeconfig.cache
+C:\Users\josue\Desktop\Projet_integre\EidClientApp\EidClientApp\obj\Debug\net8.0\ref\EidClientApp.dll
