@@ -8,6 +8,8 @@ namespace EidClientApp
         {
             var eidService = new EidService();
             eidService.ListAvailableSlots();
+            eidService.ListSupportedMechanisms();
+            eidService.ProcessEidCard();
         }
     }
 }
