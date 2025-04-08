@@ -1,0 +1,5 @@
+C:\Users\josue\Desktop\Projet_integre\EidClientApp\EidClientApp\obj\Debug\net9.0\EidClientApp.csproj.AssemblyReference.cache
+C:\Users\josue\Desktop\Projet_integre\EidClientApp\EidClientApp\obj\Debug\net9.0\EidClientApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\josue\Desktop\Projet_integre\EidClientApp\EidClientApp\obj\Debug\net9.0\EidClientApp.AssemblyInfoInputs.cache
+C:\Users\josue\Desktop\Projet_integre\EidClientApp\EidClientApp\obj\Debug\net9.0\EidClientApp.AssemblyInfo.cs
+C:\Users\josue\Desktop\Projet_integre\EidClientApp\EidClientApp\obj\Debug\net9.0\EidClientApp.csproj.CoreCompileInputs.cache

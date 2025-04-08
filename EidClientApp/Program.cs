@@ -1,7 +1,13 @@
-﻿public class Program
+﻿using EidClientApp.Services;
+
+namespace EidClientApp
 {
-    public static async Task Main(string[] args)
+    public class Program
     {
-        Console.WriteLine("coucou");
+        public static void Main(string[] args)
+        {
+            var eidService = new EidService();
+            eidService.ListAvailableSlots();
+        }
     }
 }

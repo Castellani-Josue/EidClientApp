@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="Pkcs11Interop" Version="5.3.0" />
+    <PackageReference Include="Pkcs11Interop.X509Store" Version="1.1.0" />
   </ItemGroup>
 
 </Project>

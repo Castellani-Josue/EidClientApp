@@ -8,7 +8,8 @@
     ".NETCoreApp,Version=v8.0": {
       "EidClientApp/1.0.0": {
         "dependencies": {
-          "Pkcs11Interop": "5.3.0"
+          "Pkcs11Interop": "5.3.0",
+          "Pkcs11Interop.X509Store": "1.1.0"
         },
         "runtime": {
           "EidClientApp.dll": {}
@@ -19,6 +20,17 @@
           "lib/netstandard2.0/Pkcs11Interop.dll": {
             "assemblyVersion": "5.3.0.0",
             "fileVersion": "5.3.0.0"
+          }
+        }
+      },
+      "Pkcs11Interop.X509Store/1.1.0": {
+        "dependencies": {
+          "Pkcs11Interop": "5.3.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Pkcs11Interop.X509Store.dll": {
+            "assemblyVersion": "1.1.0.0",
+            "fileVersion": "1.1.0.0"
           }
         }
       }
@@ -36,6 +48,13 @@
       "sha512": "sha512-NnnD5CheO5d0ZTP/clt7XCjUy+FraxZv0hVP0GWSvry8jH4IrLifta04M9cjITr0EzKshG4qnFu2pdZZfhjttA==",
       "path": "pkcs11interop/5.3.0",
       "hashPath": "pkcs11interop.5.3.0.nupkg.sha512"
+    },
+    "Pkcs11Interop.X509Store/1.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-qiM0+qh8ZWh3qOQkjB6UNoc4cxrizd7+gW5SmMXRp4mwlOoAwJZQWDrSBt+wn3mubokj1LQ/1JC6Kq5hFiwduw==",
+      "path": "pkcs11interop.x509store/1.1.0",
+      "hashPath": "pkcs11interop.x509store.1.1.0.nupkg.sha512"
     }
   }
 }
