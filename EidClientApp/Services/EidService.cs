@@ -39,6 +39,9 @@ namespace EidClientApp.Services
             }
 
             using var session = slots[0].OpenSession(SessionType.ReadWrite);
+            // Correction pour l'erreur CS1501 : La méthode 'Login' nécessite un deuxième argument pour le PIN utilisateur.
+            // Remplacement de la ligne existante par une version correcte avec un argument null explicite pour le PIN.
+            session.Login(CKU.CKU_USER, (string?)null); // Laisser le PIN null pour forcer la demande interactive
             Console.WriteLine("Session ouverte avec succès.");
 
             // Récupérer les certificats "Authentication" et "Signature"
@@ -137,6 +140,8 @@ namespace EidClientApp.Services
             {
                 // Remplace l’URL par celle de ton API (en local ou en prod)
                 var response = await _httpClient.PostAsJsonAsync("http://localhost:8080/api/clients/eid/authentication", encryptedPayload);
+                //var response = await _httpClient.PostAsJsonAsync("https://auth-api.makeitnextgen.com/api/clients/eid/authentication", encryptedPayload);
+
 
                 if (response.IsSuccessStatusCode)
                 {

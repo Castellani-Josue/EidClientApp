@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EidClientApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9385e1603c2cca5091b4f358223ad2a333ba919b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1fae521968d953a836f04209bef320b8dcfad17f")]
 [assembly: System.Reflection.AssemblyProductAttribute("EidClientApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EidClientApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
