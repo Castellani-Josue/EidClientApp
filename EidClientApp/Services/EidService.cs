@@ -132,11 +132,11 @@ namespace EidClientApp.Services
                 iv = Convert.ToBase64String(iv)
             };
 
-            // Envoi de la requête HTTP POST vers ton API Spring Boot
+    
             try
             {
                 // Remplace l’URL par celle de ton API (en local ou en prod)
-                var response = await _httpClient.PostAsJsonAsync("http://localhost:8080/api/clients/eid/certificate", encryptedPayload);
+                var response = await _httpClient.PostAsJsonAsync("http://localhost:8080/api/clients/eid/authentication", encryptedPayload);
 
                 if (response.IsSuccessStatusCode)
                 {
