@@ -33,10 +33,31 @@ namespace EidClientApp.Services
                 // Modification : utiliser le mécanisme CKM_ECDSA_SHA256
                 IMechanism mechanism = session.Factories.MechanismFactory.Create(CKM.CKM_ECDSA_SHA256);
                 Console.WriteLine("Mécanisme de signature CKM_ECDSA_SHA256 créé.");
+                byte[] 
 
                 // Signature du message brut (le mécanisme se charge du hachage)
                 Console.WriteLine("Signature du message...");
-                byte[] signature = session.Sign(mechanism, privateKey, messageBytes);
+                //byte[] signature = session.Sign(mechanism, privateKey, messageBytes);
+                Console.WriteLine("Message signé.");
+                return signature;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Erreur lors de la signature du message : {ex.Message}");
+                throw;
+            }
+        }
+
+        public byte[] SignMessageWithoutSignature(ISession session, byte[] bytes)
+        {
+            try
+            {
+                IMechanism mechanism = session.Factories.MechanismFactory.Create(CKM.CKM_ECDSA_SHA256);
+                Console.WriteLine("Mécanisme de signature CKM_ECDSA_SHA256 créé.");
+
+                // Signature du message brut (le mécanisme se charge du hachage)
+                Console.WriteLine("Signature du message...");
+                byte[] signature = session.Sign(mechanism, null, bytes);
                 Console.WriteLine("Message signé.");
                 return signature;
             }
