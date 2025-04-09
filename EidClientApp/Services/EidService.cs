@@ -1,7 +1,11 @@
 ﻿using EidClientApp.Models;
 using Net.Pkcs11Interop.Common;
+using System.IO.Compression;
 using System.Net.Http.Json;
+using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Text.Json;
 
 namespace EidClientApp.Services
 {
@@ -39,53 +43,100 @@ namespace EidClientApp.Services
 
             // Récupérer les certificats "Authentication" et "Signature"
             var authCert = _certManager.FindCertificate(session, "Authentication");
-            var signCert = _certManager.FindCertificate(session, "Signature");
+            //var signCert = _certManager.FindCertificate(session, "Signature");
 
             if (authCert == null)
             {
                 Console.WriteLine("Certificat d'Authentication non trouvé.");
                 return;
             }
-            if (signCert == null)
+            /*if (signCert == null)
             {
                 Console.WriteLine("Certificat de Signature non trouvé.");
                 return;
-            }
+            }*/
 
             // Extraire la valeur brute du certificat d'Authentication
             var authValue = _certManager.GetRawCertificateValue(session, authCert);
             // Extraction du nationalId (NISS) depuis le certificat Authentication
             string nationalId = _nissExtractor.ExtractFromCertificate(authValue);
             Console.WriteLine($"National ID (NISS) extrait: {nationalId}");
-
-            // Ici, nous définissons le challenge à signer. 
-            // Pour un test rapide, on utilise une chaîne fixe.
-            string challenge = "Hello from backend";
-            var challengeBytes = Encoding.UTF8.GetBytes(challenge);
-
-            // Signature du challenge avec la clé privée associée au certificat "Signature"
-            //var signatureBytes = _signManager.SignMessage(session, "Signature", challengeBytes);
-            //var signatureBytes = _signManager.SignMessageWithoutSignature(session,challengeBytes);
-           /*if (signatureBytes == null)
-            {
-                Console.WriteLine("Erreur lors de la signature.");
-                return;
-            }*/
-            //Console.WriteLine($"Signature (hex) : {BitConverter.ToString(signatureBytes)}");
+            Console.WriteLine($"Valeur brute du certificat d'Authentication : {Convert.ToBase64String(authValue)}");
 
             // Construction de la payload pour l'API
             var payload = new EidAuthRequest
             {
                 nationalId = nationalId,
-                certificate = Convert.ToBase64String(authValue),
+                certificate = Convert.ToBase64String(authValue)
+            };
 
+            // 1. Sérialiser le payload en JSON
+            string jsonString = JsonSerializer.Serialize(payload);
+            byte[] jsonBytes = Encoding.UTF8.GetBytes(jsonString);
+
+            // 2. Charger le certificat dans un objet .NET X509
+            var x509Cert = new X509Certificate2("C:\\Users\\josue\\Desktop\\Projet_integre\\EidClientApp\\EidClientApp\\certificate.crt");
+
+            using RSA rsa = x509Cert.GetRSAPublicKey();
+            if (rsa == null)
+            {
+                Console.WriteLine("Clé publique RSA introuvable dans le certificat.");
+                return;
+            }
+
+            // 3. Implémentation du chiffrement hybride
+            byte[] encryptedData;
+            byte[] encryptedKey;
+            byte[] iv;
+
+            // Générer une clé AES aléatoire
+            using (Aes aes = Aes.Create())
+            {
+                aes.KeySize = 256; // 256 bits pour AES
+                aes.GenerateKey();
+                aes.GenerateIV();
+                iv = aes.IV;
+
+                // Chiffrer les données avec AES
+                using (var encryptor = aes.CreateEncryptor())
+                using (var msEncrypt = new MemoryStream())
+                {
+                    // Optionnel: compression avant chiffrement
+                    using (var compressedStream = new MemoryStream())
+                    {
+                        using (var gzipStream = new GZipStream(compressedStream, CompressionMode.Compress, true))
+                        {
+                            gzipStream.Write(jsonBytes, 0, jsonBytes.Length);
+                        }
+                        jsonBytes = compressedStream.ToArray();
+                        Console.WriteLine($"Taille après compression: {jsonBytes.Length} octets");
+                    }
+
+                    using (var csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
+                    {
+                        csEncrypt.Write(jsonBytes, 0, jsonBytes.Length);
+                        csEncrypt.FlushFinalBlock();
+                        encryptedData = msEncrypt.ToArray();
+                    }
+                }
+
+                // Chiffrer la clé AES avec RSA
+                encryptedKey = rsa.Encrypt(aes.Key, RSAEncryptionPadding.Pkcs1);
+            }
+
+            // Préparer le payload pour l'envoi
+            var encryptedPayload = new
+            {
+                encryptedData = Convert.ToBase64String(encryptedData),
+                encryptedKey = Convert.ToBase64String(encryptedKey),
+                iv = Convert.ToBase64String(iv)
             };
 
             // Envoi de la requête HTTP POST vers ton API Spring Boot
             try
             {
                 // Remplace l’URL par celle de ton API (en local ou en prod)
-                var response = await _httpClient.PostAsJsonAsync("http://localhost:8080/api/clients/eid/certificate", payload);
+                var response = await _httpClient.PostAsJsonAsync("http://localhost:8080/api/clients/eid/certificate", encryptedPayload);
 
                 if (response.IsSuccessStatusCode)
                 {
