@@ -16,3 +16,6 @@ C:\Users\josue\Desktop\Projet_integre\EidClientApp\EidClientApp\obj\Debug\net8.0
 C:\Users\josue\Desktop\Projet_integre\EidClientApp\EidClientApp\obj\Debug\net8.0\EidClientApp.pdb
 C:\Users\josue\Desktop\Projet_integre\EidClientApp\EidClientApp\obj\Debug\net8.0\EidClientApp.genruntimeconfig.cache
 C:\Users\josue\Desktop\Projet_integre\EidClientApp\EidClientApp\obj\Debug\net8.0\ref\EidClientApp.dll
+C:\Users\josue\Desktop\Projet_integre\EidClientApp\EidClientApp\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\josue\Desktop\Projet_integre\EidClientApp\EidClientApp\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\josue\Desktop\Projet_integre\EidClientApp\EidClientApp\obj\Debug\net8.0\EidClientApp.sourcelink.json
