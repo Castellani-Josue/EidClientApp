@@ -3,10 +3,10 @@
 ### architecture
 
 EidAuthClient/
-├── Program.cs                <-- Main
+├── Program.cs                
 ├── Services/
-│   └── EidService.cs        <-- Interaction avec la carte
+│   └── EidService.cs        
 ├── Models/
-│   └── EidAuthData.cs       <-- Modèle pour l'envoi à l'API
+│   └── EidAuthData.cs       
 
 
